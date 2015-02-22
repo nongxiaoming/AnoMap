@@ -225,7 +225,7 @@ namespace mapcontrol
     }
     void OPMapWidget::showEvent(QShowEvent *event)
     {
-        connect(&mscene,SIGNAL(sceneRectChanged(QRectF)),map,SLOT(resize(QRectF)));
+        connect(&mscene,SIGNAL(sceneRectChanged(QRectF)),map,SLOT(resize(QRectF)), Qt::UniqueConnection);
         map->start();
         QGraphicsView::showEvent(event);
     }
@@ -269,7 +269,11 @@ namespace mapcontrol
     void OPMapWidget::mouseMoveEvent(QMouseEvent *event)
     {
         QGraphicsView::mouseMoveEvent(event);
+#if QT_VERSION >= 0x050000
         QPointF p=event->localPos();
+#else
+        QPointF p=event->posF();
+#endif
         p=map->mapFromParent(p);
         currentmouseposition=map->FromLocalToLatLng(p.x(),p.y());
     }

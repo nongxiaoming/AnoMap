@@ -42,8 +42,10 @@ namespace internals {
     minOfTiles(0,0),
     maxOfTiles(0,0),
     zoom(0),
+    projection(NULL),
     isDragging(false),
     TooltipTextPadding(10,10),
+    mapType(MapType::GoogleMap),
     loaderLimit(5),
     maxzoom(21),
     runningThreads(0),
@@ -61,6 +63,9 @@ namespace internals {
     }
     Core::~Core()
     {
+        if (projection) {
+            delete projection;
+        }
         ProcessLoadTaskCallback.waitForDone();
     }
 
@@ -360,7 +365,7 @@ namespace internals {
                     {
                         SetProjection(new MercatorProjection());
                     }
-                    maxzoom=21;
+                    maxzoom=20;
                 }
                 break;
 
@@ -370,7 +375,7 @@ namespace internals {
                     {
                         SetProjection(new MercatorProjection());
                     }
-                    maxzoom=21;
+                    maxzoom=20;
                 }
                 break;
             }

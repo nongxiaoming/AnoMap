@@ -6,8 +6,8 @@
 DEFINES += EXTERNAL_USE
 
 OPMAPCONTROL_DIR = libs/opmapcontrol
-DEPENDPATH += $$OPMAPCONTROL/core $$OPMAPCONTROL_DIR/src/internals $$OPMAPCONTROL_DIR/src/mapwidget $$OPMAPCONTROL_DIR/src/internals/projections
-INCLUDEPATH += $$OPMAPCONTROL_DIR/src/core $$OPMAPCONTROL_DIR/src/internals $$OPMAPCONTROL_DIR/src/internals/projections $$OPMAPCONTROL_DIR/src/mapwidget
+DEPENDPATH += $$OPMAPCONTROL_DIR $$OPMAPCONTROL_DIR/src/core $$OPMAPCONTROL_DIR/src/internals $$OPMAPCONTROL_DIR/src/mapwidget $$OPMAPCONTROL_DIR/src/internals/projections
+INCLUDEPATH += $$OPMAPCONTROL_DIR $$OPMAPCONTROL_DIR/src/core $$OPMAPCONTROL_DIR/src/internals $$OPMAPCONTROL_DIR/src/internals/projections $$OPMAPCONTROL_DIR/src/mapwidget
 
 # Input
 HEADERS += $$OPMAPCONTROL_DIR/opmapcontrol.h \
